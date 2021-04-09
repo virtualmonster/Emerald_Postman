@@ -1,0 +1,216 @@
+{
+	"info": {
+		"_postman_id": "27001798-85ad-4454-878f-e0e832b46f85",
+		"name": "HCL Commerce SoFy Demo 1 - Personalized Shopping Experience",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Begin Guest Shopper Session",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"WCToken\", jsonData.WCToken);\r",
+							"postman.setEnvironmentVariable(\"WCTrustedToken\", jsonData.WCTrustedToken); "
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://{{bda-hostname}}:{{port-number}}/wcs/resources/store/{{storeId}}/guestidentity?langId=-1",
+					"protocol": "https",
+					"host": [
+						"{{bda-hostname}}"
+					],
+					"port": "{{port-number}}",
+					"path": [
+						"wcs",
+						"resources",
+						"store",
+						"{{storeId}}",
+						"guestidentity"
+					],
+					"query": [
+						{
+							"key": "langId",
+							"value": "-1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Default E-Marketing Spot Data",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{{{adminpass}}}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{{{adminid}}}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "WCToken",
+						"value": "{{WCToken}}",
+						"type": "text"
+					},
+					{
+						"key": "WCTrustedToken",
+						"value": "{{WCTrustedToken}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{bda-hostname}}:{{port-number}}/wcs/resources/store/11/espot/Home_ProductRec/type/MARKETING",
+					"protocol": "https",
+					"host": [
+						"{{bda-hostname}}"
+					],
+					"port": "{{port-number}}",
+					"path": [
+						"wcs",
+						"resources",
+						"store",
+						"11",
+						"espot",
+						"Home_ProductRec",
+						"type",
+						"MARKETING"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Qualifying Item To Cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"orderId\", jsonData.orderId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "WCTrustedToken",
+						"value": "{{WCTrustedToken}}",
+						"type": "text"
+					},
+					{
+						"key": "WCToken",
+						"value": "{{WCToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"orderId\":\".\",\"x_calculateOrder\":\"1\",\"orderItem\":[{\"quantity\":\"1\",\"partNumber\":\"{{productSku}}\",\"contractId\":\"-11005\"}],\"x_inventoryValidation\":true}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{bda-hostname}}:{{port-number}}/wcs/resources/store/{{storeId}}/cart?langId=-1",
+					"protocol": "https",
+					"host": [
+						"{{bda-hostname}}"
+					],
+					"port": "{{port-number}}",
+					"path": [
+						"wcs",
+						"resources",
+						"store",
+						"{{storeId}}",
+						"cart"
+					],
+					"query": [
+						{
+							"key": "langId",
+							"value": "-1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Personalized E-Marketing Spot Data",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{{{adminpass}}}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{{{adminid}}}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "WCToken",
+						"value": "{{WCToken}}",
+						"type": "text"
+					},
+					{
+						"key": "WCTrustedToken",
+						"value": "{{WCTrustedToken}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{bda-hostname}}:{{port-number}}/wcs/resources/store/11/espot/Home_ProductRec/type/MARKETING",
+					"protocol": "https",
+					"host": [
+						"{{bda-hostname}}"
+					],
+					"port": "{{port-number}}",
+					"path": [
+						"wcs",
+						"resources",
+						"store",
+						"11",
+						"espot",
+						"Home_ProductRec",
+						"type",
+						"MARKETING"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

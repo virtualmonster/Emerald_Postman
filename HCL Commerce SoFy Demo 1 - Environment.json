@@ -1,0 +1,59 @@
+{
+	"id": "a91e0f05-ca35-473d-b2db-481be0d79d38",
+	"name": "HCL Commerce SoFy Demo 1 Environment",
+	"values": [
+		{
+			"key": "bda-hostname",
+			"value": "commerce-preview.sbx****.play.sofy.dev",
+			"enabled": true
+		},
+		{
+			"key": "storeId",
+			"value": "11",
+			"enabled": true
+		},
+		{
+			"key": "WCToken",
+			"value": "47002%2CKZJdlbaa%2BZfBvcPAjx5iAYBMMO2ztGRjwfDG6g0iKUe%2BCTzPKO7LGybWB7kp%2F2VoFXCntrQMBsOyGO183p9ec01SYMwgqwjQBiJWrwHlDXijdv3XmpEWORzZz1N...",
+			"enabled": true
+		},
+		{
+			"key": "WCTrustedToken",
+			"value": "47002%2CjkVOR2vBhFuFWo4cgdfdjmiugZo%2FAHUuWdyLkZiRs4A%3D",
+			"enabled": true
+		},
+		{
+			"key": "port-number",
+			"value": "443",
+			"enabled": true
+		},
+		{
+			"key": "productSku",
+			"value": "BD-BEDS-0001-0001",
+			"enabled": true
+		},
+		{
+			"key": "eSpotName",
+			"value": "Home_ProductRec",
+			"enabled": true
+		},
+		{
+			"key": "orderId",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "{{adminid}}",
+			"value": "wcsadmin",
+			"enabled": true
+		},
+		{
+			"key": "{{adminpass}}",
+			"value": "wcs1admin",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2021-03-03T17:19:52.524Z",
+	"_postman_exported_using": "Postman/7.36.5"
+}
